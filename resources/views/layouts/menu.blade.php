@@ -1,3 +1,10 @@
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('home') }}">
+        <i class="nav-icon icon-home"></i>
+        <span>Dashboard</span>
+    </a>
+</li>
+
 <li class="nav-item {{ Request::is('venues*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('venues.index') }}">
         <i class="nav-icon icon-cursor"></i>
