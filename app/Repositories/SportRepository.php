@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Sport;
+use App\Models\Xref\Sport;
 use App\Repositories\BaseRepository;
 
 /**

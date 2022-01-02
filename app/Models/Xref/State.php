@@ -26,7 +26,7 @@ class State extends Model
 
 
     public $fillable = [
-        
+        'name'
     ];
 
     /**

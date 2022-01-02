@@ -14,5 +14,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        $this->call(XrefSportSeeder::class);
+        $this->call(XrefStateSeeder::class);
+        $this->call(XrefDistrictSeeder::class);
+
     }
 }

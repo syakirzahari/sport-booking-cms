@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\State;
+use App\Models\Xref\State;
 use App\Repositories\BaseRepository;
 
 /**

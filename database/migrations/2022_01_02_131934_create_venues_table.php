@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStatesTable extends Migration
+class CreateVenuesTable extends Migration
 {
 
     /**
@@ -14,9 +14,15 @@ class CreateStatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('xref_states', function (Blueprint $table) {
+        Schema::create('venues', function (Blueprint $table) {
             $table->id('id');
             $table->string('name');
+            $table->text('address');
+            $table->foreignId('district_id')->constrained('xref_districts');
+            $table->foreignId('state_id')->constrained('xref_states');
+            $table->string('lat');
+            $table->string('lng');
+            $table->foreignId('owner_id')->constrained('users');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +35,6 @@ class CreateStatesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('states');
+        Schema::drop('venues');
     }
 }

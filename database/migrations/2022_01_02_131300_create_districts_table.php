@@ -17,7 +17,7 @@ class CreateDistrictsTable extends Migration
         Schema::create('xref_districts', function (Blueprint $table) {
             $table->id('id');
             $table->string('name');
-            $table->integer('state_id');
+            $table->foreignId('state_id')->constrained('xref_states');
             $table->timestamps();
             $table->softDeletes();
         });

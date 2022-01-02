@@ -2,23 +2,28 @@
 
 namespace App\Repositories;
 
-use App\Models\Xref\District;
+use App\Models\Venue;
 use App\Repositories\BaseRepository;
 
 /**
- * Class DistrictRepository
+ * Class VenueRepository
  * @package App\Repositories
- * @version January 2, 2022, 1:13 pm UTC
+ * @version January 2, 2022, 1:19 pm UTC
 */
 
-class DistrictRepository extends BaseRepository
+class VenueRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
         'name',
-        'state_id'
+        'address',
+        'district_id',
+        'state_id',
+        'lat',
+        'lng',
+        'owner_id'
     ];
 
     /**
@@ -36,6 +41,6 @@ class DistrictRepository extends BaseRepository
      **/
     public function model()
     {
-        return District::class;
+        return Venue::class;
     }
 }

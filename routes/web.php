@@ -29,3 +29,6 @@ Route::resource('districts', App\Http\Controllers\DistrictController::class);
 
 
 Route::resource('sports', App\Http\Controllers\SportController::class);
+
+
+Route::resource('venues', App\Http\Controllers\VenueController::class);
