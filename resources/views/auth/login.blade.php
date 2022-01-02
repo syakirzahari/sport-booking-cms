@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Login | CoreUI | {{ config('app.name') }}</title>
+    <title>Login | {{ config('app.name') }}</title>
     <meta name="description" content="CoreUI Template - InfyOm Laravel Generator">
     <meta name="keyword" content="CoreUI,Bootstrap,Admin,Template,InfyOm,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
     <!-- Bootstrap-->
@@ -70,13 +70,14 @@
                         </form>
                     </div>
                 </div>
-                <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+                <div class="card text-white bg-danger py-5 d-md-down-none" style="width:44%">
                     <div class="card-body text-center">
+                        <img class="navbar-brand-full" src="{{asset('img/sports-logo.png')}}" width="100" height="100"
+                        alt="CMS">
                         <div>
-                            <h2>Sign up</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</p>
-                                <a class="btn btn-primary active mt-3" href="{{ url('/register') }}">Register Now!</a>
+                            <h2>Content Management System</h2>
+                            <p>Sports Booking System.</p>
+                                {{-- <a class="btn btn-primary active mt-3" href="{{ url('/register') }}">Register Now!</a> --}}
                         </div>
                     </div>
                 </div>

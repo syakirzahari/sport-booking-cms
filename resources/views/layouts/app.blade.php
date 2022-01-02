@@ -46,7 +46,7 @@
         <li class="nav-item dropdown">
             <a class="nav-link" style="margin-right: 10px" data-toggle="dropdown" href="#" role="button"
                aria-haspopup="true" aria-expanded="false">
-                {{ Auth::user()->name }}
+                {{ Auth::user()->name ?? '' }}
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item" href="#">

@@ -17,29 +17,34 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+// Auth::routes();
+Auth::routes(['register' => false]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-Route::resource('states', App\Http\Controllers\StateController::class);
-
-
-Route::resource('districts', App\Http\Controllers\DistrictController::class);
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::resource('sports', App\Http\Controllers\SportController::class);
+    Route::resource('states', App\Http\Controllers\StateController::class);
+    
+    
+    Route::resource('districts', App\Http\Controllers\DistrictController::class);
+    
+    
+    Route::resource('sports', App\Http\Controllers\SportController::class);
+    
+    
+    Route::resource('venues', App\Http\Controllers\VenueController::class);
+    
+    
+    Route::resource('articles', App\Http\Controllers\ArticleController::class);
+    
+    Route::resource('users', App\Http\Controllers\UserController::class);
+    
+    
+    Route::resource('sportVenues', App\Http\Controllers\SportVenueController::class);
+    
+    
+    Route::resource('vendors', App\Http\Controllers\VendorController::class);
+});
 
 
-Route::resource('venues', App\Http\Controllers\VenueController::class);
-
-
-Route::resource('articles', App\Http\Controllers\ArticleController::class);
-
-Route::resource('users', App\Http\Controllers\UserController::class);
-
-
-Route::resource('sportVenues', App\Http\Controllers\SportVenueController::class);
-
-
-Route::resource('vendors', App\Http\Controllers\VendorController::class);
