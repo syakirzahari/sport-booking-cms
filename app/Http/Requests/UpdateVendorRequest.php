@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Vendor;
+use App\Models\Xref\Vendor;
 
 class UpdateVendorRequest extends FormRequest
 {

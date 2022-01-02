@@ -2,13 +2,15 @@
     <table class="table table-striped" id="sports-table">
         <thead>
             <tr>
+                <th>#</th>
                 <th>Name</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
         <tbody>
-        @foreach($sports as $sport)
+        @foreach($sports as $i => $sport)
             <tr>
+                <td>{{ $i+1 }}</td>
                 <td>{{ $sport->name }}</td>
                 <td>
                     {!! Form::open(['route' => ['sports.destroy', $sport->id], 'method' => 'delete']) !!}

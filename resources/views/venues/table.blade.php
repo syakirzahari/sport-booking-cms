@@ -2,6 +2,7 @@
     <table class="table table-striped" id="venues-table">
         <thead>
             <tr>
+                <th>#</th>
                 <th>Name</th>
         <th>Address</th>
         <th>District</th>
@@ -15,8 +16,9 @@
         </thead>
         <tbody>
         @if(count($venues) > 0)
-        @foreach($venues as $venue)
+        @foreach($venues as $i => $venue)
             <tr>
+                <td>{{ $i+1 }}</td>
                 <td>{{ $venue->name }}</td>
             <td>{{ $venue->address }}</td>
             <td>{{ $venue->district->name }}</td>

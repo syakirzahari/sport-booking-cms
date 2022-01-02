@@ -13,7 +13,7 @@
                          <div class="card-header">
                              <i class="fa fa-align-justify"></i>
                              List of Sport Venues
-                             <a class="pull-right" href="{{ route('sportVenues.create') }}"><i class="fa fa-plus-square fa-lg"></i></a>
+                             <a class="pull-right" href="{{ route('sportVenues.create') }}"><i class="fa fa-plus-square fa-lg"></i> Add</a>
                          </div>
                          <div class="card-body">
                              @include('sport_venues.table')

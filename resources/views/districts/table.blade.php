@@ -2,14 +2,17 @@
     <table class="table table-striped" id="districts-table">
         <thead>
             <tr>
+                <th>#</th>
                 <th>Name</th>
         <th>State</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
         <tbody>
-        @foreach($districts as $district)
+        @foreach($districts as $i => $district)
+           
             <tr>
+                <td>{{ $i+1 }}</td>
                 <td>{{ $district->name }}</td>
             <td>{{ $district->state->name }}</td>
                 <td>

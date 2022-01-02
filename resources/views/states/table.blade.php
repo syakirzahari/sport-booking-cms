@@ -2,13 +2,15 @@
     <table class="table table-striped" id="states-table">
         <thead>
             <tr>
+                <th>No</th>
                 <th>Name</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
         <tbody>
-        @foreach($states as $state)
+        @foreach($states as $i => $state)
             <tr>
+                <td>{{ $i + 1 }}</td>
                 <td>{{ $state->name }}</td>
                 <td>
                     {!! Form::open(['route' => ['states.destroy', $state->id], 'method' => 'delete']) !!}

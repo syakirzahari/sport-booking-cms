@@ -2,6 +2,7 @@
     <table class="table table-striped" id="users-table">
         <thead>
             <tr>
+                <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Telephone No.</th>
@@ -10,8 +11,9 @@
             </tr>
         </thead>
         <tbody>
-        @foreach($users as $user)
+        @foreach($users as $i => $user)
             <tr>
+                <td>{{ $i+1 }}</td>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->telephone_number ?? '-' }}</td>
