@@ -15,11 +15,18 @@
                          <div class="card">
                              <div class="card-header">
                                  <strong>Details</strong>
-                                  <a href="{{ route('districts.index') }}" class="btn btn-light">Back</a>
                              </div>
                              <div class="card-body">
                                  @include('districts.show_fields')
                              </div>
+                             <div class="card-footer">
+                                <div class="row">
+                                    <!-- Submit Field -->
+                                    <div class="form-group col-sm-12 m-b-none">
+                                        <a href="{{ route('districts.index') }}" class="btn btn-primary">Back</a>
+                                    </div>
+                                </div>
+                            </div>
                          </div>
                      </div>
                  </div>

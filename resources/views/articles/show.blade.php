@@ -3,7 +3,7 @@
 @section('content')
      <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="{{ route('sports.index') }}">Sport</a>
+                <a href="{{ route('articles.index') }}">Article</a>
             </li>
             <li class="breadcrumb-item active">Detail</li>
      </ol>
@@ -15,18 +15,11 @@
                          <div class="card">
                              <div class="card-header">
                                  <strong>Details</strong>
+                                  <a href="{{ route('articles.index') }}" class="btn btn-light">Back</a>
                              </div>
                              <div class="card-body">
-                                 @include('sports.show_fields')
+                                 @include('articles.show_fields')
                              </div>
-                             <div class="card-footer">
-                                <div class="row">
-                                    <!-- Submit Field -->
-                                    <div class="form-group col-sm-12 m-b-none">
-                                        <a href="{{ route('sports.index') }}" class="btn btn-primary">Back</a>
-                                    </div>
-                                </div>
-                            </div>
                          </div>
                      </div>
                  </div>

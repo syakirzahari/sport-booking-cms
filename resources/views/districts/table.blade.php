@@ -11,7 +11,7 @@
         @foreach($districts as $district)
             <tr>
                 <td>{{ $district->name }}</td>
-            <td>{{ $district->state_id }}</td>
+            <td>{{ $district->state->name }}</td>
                 <td>
                     {!! Form::open(['route' => ['districts.destroy', $district->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

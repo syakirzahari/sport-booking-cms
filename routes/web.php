@@ -32,3 +32,8 @@ Route::resource('sports', App\Http\Controllers\SportController::class);
 
 
 Route::resource('venues', App\Http\Controllers\VenueController::class);
+
+
+Route::resource('articles', App\Http\Controllers\ArticleController::class);
+
+Route::resource('users', App\Http\Controllers\UserController::class);

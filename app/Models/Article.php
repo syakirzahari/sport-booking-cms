@@ -1,26 +1,27 @@
 <?php
 
-namespace App\Models\Xref;
+namespace App\Models;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * Class District
+ * Class Article
  * @package App\Models
- * @version January 2, 2022, 1:13 pm UTC
+ * @version January 2, 2022, 2:14 pm UTC
  *
- * @property string $name
- * @property integer $state_id
+ * @property string $title
+ * @property string $content
+ * @property integer $article_type_id
  */
-class District extends Model
+class Article extends Model
 {
     use SoftDeletes;
 
     use HasFactory;
 
-    public $table = 'xref_districts';
+    public $table = 'articles';
     
 
     protected $dates = ['deleted_at'];
@@ -28,8 +29,10 @@ class District extends Model
 
 
     public $fillable = [
-        'name',
-        'state_id'
+        'title',
+        'content',
+        'article_type_id',
+        'created_by'
     ];
 
     /**
@@ -38,8 +41,9 @@ class District extends Model
      * @var array
      */
     protected $casts = [
-        'name' => 'string',
-        'state_id' => 'integer'
+        'title' => 'string',
+        'content' => 'string',
+        'article_type_id' => 'integer'
     ];
 
     /**
@@ -51,10 +55,9 @@ class District extends Model
         
     ];
 
-    public function state()
+    public function creator()
     {
-        return $this->hasOne('\App\Models\Xref\State', 'id', 'state_id');
+        return $this->hasOne(User::class);
     }
-
     
 }
