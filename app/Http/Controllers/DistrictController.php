@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateDistrictRequest;
 use App\Repositories\DistrictRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use App\Models\Xref\District;
 use Flash;
 use Response;
 
@@ -29,7 +30,9 @@ class DistrictController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $districts = $this->districtRepository->all();
+        // $districts = $this->districtRepository->all();
+
+        $districts = District::orderBy('state_id', 'asc')->get();
 
         return view('districts.index')
             ->with('districts', $districts);

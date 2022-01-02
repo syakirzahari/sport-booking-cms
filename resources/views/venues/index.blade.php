@@ -12,8 +12,8 @@
                      <div class="card">
                          <div class="card-header">
                              <i class="fa fa-align-justify"></i>
-                             Venues
-                             <a class="pull-right" href="{{ route('venues.create') }}"><i class="fa fa-plus-square fa-lg"></i></a>
+                             List of Venues
+                             <a class="pull-right" href="{{ route('venues.create') }}"><i class="fa fa-plus-square fa-lg"></i> Add</a>
                          </div>
                          <div class="card-body">
                              @include('venues.table')

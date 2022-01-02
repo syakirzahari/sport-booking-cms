@@ -2,14 +2,14 @@
     <table class="table table-striped" id="states-table">
         <thead>
             <tr>
-                
+                <th>Name</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
         <tbody>
         @foreach($states as $state)
             <tr>
-                
+                <td>{{ $state->name }}</td>
                 <td>
                     {!! Form::open(['route' => ['states.destroy', $state->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

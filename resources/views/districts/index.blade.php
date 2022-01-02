@@ -12,8 +12,8 @@
                      <div class="card">
                          <div class="card-header">
                              <i class="fa fa-align-justify"></i>
-                             Districts
-                             <a class="pull-right" href="{{ route('districts.create') }}"><i class="fa fa-plus-square fa-lg"></i></a>
+                             List of Districts
+                             <a class="pull-right" href="{{ route('districts.create') }}"><i class="fa fa-plus-square fa-lg"></i> Add</a>
                          </div>
                          <div class="card-body">
                              @include('districts.table')

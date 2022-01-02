@@ -13,6 +13,7 @@
             </tr>
         </thead>
         <tbody>
+        @if(count($venues) > 0)
         @foreach($venues as $venue)
             <tr>
                 <td>{{ $venue->name }}</td>
@@ -33,6 +34,9 @@
                 </td>
             </tr>
         @endforeach
+        @else
+        <td colspan="8">No Data</td>
+        @endif
         </tbody>
     </table>
 </div>
