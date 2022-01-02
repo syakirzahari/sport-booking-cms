@@ -4,11 +4,12 @@
             <tr>
                 <th>Name</th>
         <th>Address</th>
-        <th>District Id</th>
-        <th>State Id</th>
-        <th>Lat</th>
-        <th>Lng</th>
-        <th>Owner Id</th>
+        <th>District</th>
+        <th>State</th>
+        <th>Telephone Number</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Owner</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
@@ -18,11 +19,12 @@
             <tr>
                 <td>{{ $venue->name }}</td>
             <td>{{ $venue->address }}</td>
-            <td>{{ $venue->district_id }}</td>
-            <td>{{ $venue->state_id }}</td>
+            <td>{{ $venue->district->name }}</td>
+            <td>{{ $venue->state->name }}</td>
+            <td>{{ $venue->telephone_number }}</td>
             <td>{{ $venue->lat }}</td>
             <td>{{ $venue->lng }}</td>
-            <td>{{ $venue->owner_id }}</td>
+            <td>{{ $venue->owner->name }}</td>
                 <td>
                     {!! Form::open(['route' => ['venues.destroy', $venue->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

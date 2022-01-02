@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Eloquent as Model;
+use App\Models\Xref\District;
+use App\Models\Xref\State;
+
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -39,7 +42,8 @@ class Venue extends Model
         'state_id',
         'lat',
         'lng',
-        'owner_id'
+        'owner_id',
+        'telephone_number'
     ];
 
     /**
@@ -63,8 +67,24 @@ class Venue extends Model
      * @var array
      */
     public static $rules = [
-        
+        'name' => 'required|string',
+        'lat' => 'required',
+        'lng' => 'required'
     ];
 
+    public function state()
+    {
+        return $this->belongsTo(State::class, 'state_id');
+    }
+
+    public function district()
+    {
+        return $this->belongsTo(District::class, 'district_id');
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'owner_id');
+    }
     
 }

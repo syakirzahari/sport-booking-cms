@@ -23,7 +23,7 @@ class VenueRepository extends BaseRepository
         'state_id',
         'lat',
         'lng',
-        'owner_id'
+        'owner_id',
     ];
 
     /**

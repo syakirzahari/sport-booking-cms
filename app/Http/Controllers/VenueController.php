@@ -6,6 +6,9 @@ use App\Http\Requests\CreateVenueRequest;
 use App\Http\Requests\UpdateVenueRequest;
 use App\Repositories\VenueRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\User;
+use App\Models\Xref\District;
+use App\Models\Xref\State;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -42,7 +45,11 @@ class VenueController extends AppBaseController
      */
     public function create()
     {
-        return view('venues.create');
+        $owner = User::pluck('name', 'id')->all();
+        $districts = District::pluck('name', 'id')->all();
+        $states = State::pluck('name', 'id')->all();
+
+        return view('venues.create', compact('owner', 'districts', 'states'));
     }
 
     /**
@@ -93,6 +100,9 @@ class VenueController extends AppBaseController
     public function edit($id)
     {
         $venue = $this->venueRepository->find($id);
+        $owner = User::pluck('name', 'id')->all();
+        $districts = District::pluck('name', 'id')->all();
+        $states = State::pluck('name', 'id')->all();
 
         if (empty($venue)) {
             Flash::error('Venue not found');
@@ -100,7 +110,7 @@ class VenueController extends AppBaseController
             return redirect(route('venues.index'));
         }
 
-        return view('venues.edit')->with('venue', $venue);
+        return view('venues.edit', compact('owner', 'venue', 'districts', 'states'));
     }
 
     /**

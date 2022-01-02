@@ -12,14 +12,14 @@
 
 <!-- District Id Field -->
 <div class="form-group">
-    {!! Form::label('district_id', 'District Id:') !!}
-    <p>{{ $venue->district_id }}</p>
+    {!! Form::label('district_id', 'District:') !!}
+    <p>{{ $venue->district->name }}</p>
 </div>
 
 <!-- State Id Field -->
 <div class="form-group">
-    {!! Form::label('state_id', 'State Id:') !!}
-    <p>{{ $venue->state_id }}</p>
+    {!! Form::label('state_id', 'State:') !!}
+    <p>{{ $venue->state->name }}</p>
 </div>
 
 <!-- Lat Field -->
@@ -36,8 +36,8 @@
 
 <!-- Owner Id Field -->
 <div class="form-group">
-    {!! Form::label('owner_id', 'Owner Id:') !!}
-    <p>{{ $venue->owner_id }}</p>
+    {!! Form::label('owner_id', 'Owner:') !!}
+    <p>{{ $venue->owner->name }}</p>
 </div>
 
 <!-- Created At Field -->
