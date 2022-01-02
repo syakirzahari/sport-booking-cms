@@ -5,7 +5,9 @@ namespace App\Models;
 use Eloquent as Model;
 use App\Models\Xref\District;
 use App\Models\Xref\State;
-
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -22,9 +24,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string $lng
  * @property integer $owner_id
  */
-class Venue extends Model
+class Venue extends Model implements HasMedia
 {
     use SoftDeletes;
+    use InteractsWithMedia;
 
     use HasFactory;
 
@@ -85,6 +88,15 @@ class Venue extends Model
     public function owner()
     {
         return $this->belongsTo(User::class, 'owner_id');
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+            ->width(200)
+            ->height(200)
+            ->crop('crop-center', 200, 200)
+            ->sharpen(10);
     }
     
 }
