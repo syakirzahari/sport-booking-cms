@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateDistrictRequest;
 use App\Repositories\DistrictRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use App\Models\Xref\State;
 use App\Models\Xref\District;
 use Flash;
 use Response;
@@ -45,7 +46,9 @@ class DistrictController extends AppBaseController
      */
     public function create()
     {
-        return view('districts.create');
+        $states = State::pluck('name', 'id')->prepend('Select State');
+
+        return view('districts.create', compact('states'));
     }
 
     /**
@@ -96,6 +99,7 @@ class DistrictController extends AppBaseController
     public function edit($id)
     {
         $district = $this->districtRepository->find($id);
+        $states = State::pluck('name', 'id')->all();
 
         if (empty($district)) {
             Flash::error('District not found');
@@ -103,7 +107,7 @@ class DistrictController extends AppBaseController
             return redirect(route('districts.index'));
         }
 
-        return view('districts.edit')->with('district', $district);
+        return view('districts.edit', compact('states', 'district'));
     }
 
     /**

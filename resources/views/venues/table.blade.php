@@ -11,6 +11,7 @@
         <th>Latitude</th>
         <th>Longitude</th>
         <th>Owner</th>
+        <th>Vendor</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
@@ -27,6 +28,7 @@
             <td>{{ $venue->lat }}</td>
             <td>{{ $venue->lng }}</td>
             <td>{{ $venue->owner->name }}</td>
+            <td>{{ $venue->vendor->name }}</td>
                 <td>
                     {!! Form::open(['route' => ['venues.destroy', $venue->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
@@ -39,7 +41,7 @@
             </tr>
         @endforeach
         @else
-        <td colspan="8">No Data</td>
+        <td colspan="11">No Data</td>
         @endif
         </tbody>
     </table>

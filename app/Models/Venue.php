@@ -46,6 +46,7 @@ class Venue extends Model implements HasMedia
         'lat',
         'lng',
         'owner_id',
+        'vendor_id',
         'telephone_number'
     ];
 
@@ -89,6 +90,12 @@ class Venue extends Model implements HasMedia
     {
         return $this->belongsTo(User::class, 'owner_id');
     }
+
+    public function vendor()
+    {
+        return $this->belongsTo(Vendor::class, 'vendor_id');
+    }
+
 
     public function registerMediaConversions(Media $media = null): void
     {

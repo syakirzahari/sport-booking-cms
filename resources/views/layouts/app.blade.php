@@ -27,9 +27,9 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#">
-        <img class="navbar-brand-full" src="{{asset('img/mbpj-logo.png')}}" width="30" height="30"
+        <img class="navbar-brand-full" src="{{asset('img/sports-logo.png')}}" width="100" height="100"
              alt="CMS">
-        <img class="navbar-brand-minimized" src="{{asset('img/mbpj-mini.png')}}" width="30"
+        <img class="navbar-brand-minimized" src="{{asset('img/sports-logo.png')}}" width="50"
              height="30" alt="CMS">
     </a>
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">

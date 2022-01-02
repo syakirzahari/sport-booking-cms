@@ -41,6 +41,11 @@
     {{ Form::select('owner_id', $owner, null, ['class' => 'form-control']) }}
 </div>
 
+<div class="form-group col-sm-6">
+    {{ Form::label('vendor_id', 'Vendor:') }}
+    {{ Form::select('vendor_id', $vendors, null, ['class' => 'form-control']) }}
+</div>
+
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}

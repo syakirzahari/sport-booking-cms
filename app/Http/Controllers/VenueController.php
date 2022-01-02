@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateVenueRequest;
 use App\Repositories\VenueRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\User;
+use App\Models\Xref\Vendor;
 use App\Models\Xref\District;
 use App\Models\Xref\State;
 use Illuminate\Http\Request;
@@ -45,11 +46,12 @@ class VenueController extends AppBaseController
      */
     public function create()
     {
-        $owner = User::pluck('name', 'id')->all();
-        $districts = District::pluck('name', 'id')->all();
-        $states = State::pluck('name', 'id')->all();
+        $owner = User::pluck('name', 'id')->prepend('Select Owner');
+        $districts = District::pluck('name', 'id')->prepend('Select District');
+        $states = State::pluck('name', 'id')->prepend('Select State');
+        $vendors = Vendor::pluck('name', 'id')->prepend('Select Vendor');
 
-        return view('venues.create', compact('owner', 'districts', 'states'));
+        return view('venues.create', compact('owner', 'districts', 'states', 'vendors'));
     }
 
     /**
@@ -103,6 +105,7 @@ class VenueController extends AppBaseController
         $owner = User::pluck('name', 'id')->all();
         $districts = District::pluck('name', 'id')->all();
         $states = State::pluck('name', 'id')->all();
+        $vendors = Vendor::pluck('name', 'id')->all();
 
         if (empty($venue)) {
             Flash::error('Venue not found');
@@ -110,7 +113,7 @@ class VenueController extends AppBaseController
             return redirect(route('venues.index'));
         }
 
-        return view('venues.edit', compact('owner', 'venue', 'districts', 'states'));
+        return view('venues.edit', compact('owner', 'venue', 'districts', 'states', 'vendors'));
     }
 
     /**
