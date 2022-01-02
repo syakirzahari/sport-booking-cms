@@ -20,3 +20,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::resource('states', App\Http\Controllers\StateController::class);
+
+
+Route::resource('districts', App\Http\Controllers\DistrictController::class);
+
+
+Route::resource('sports', App\Http\Controllers\SportController::class);
