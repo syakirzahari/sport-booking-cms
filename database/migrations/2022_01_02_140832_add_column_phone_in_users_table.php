@@ -16,7 +16,7 @@ class AddColumnPhoneInUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('telephone_number')->nullable()->after('password');
             $table->string('team_name')->nullable()->after('telephone_number');
-            $table->integer('is_public')->default(0)>after('team_name');
+            $table->integer('is_public')->default(0)->after('team_name');
         });
     }
 
