@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateSportVenueRequest;
 use App\Http\Requests\UpdateSportVenueRequest;
 use App\Repositories\SportVenueRepository;
+use App\Models\Venue;
+use App\Models\Xref\Sport;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -42,7 +44,10 @@ class SportVenueController extends AppBaseController
      */
     public function create()
     {
-        return view('sport_venues.create');
+        $sports = Sport::pluck('name', 'id')->prepend('Select Sports');
+        $venues = Venue::pluck('name', 'id')->prepend('Select Venue');
+
+        return view('sport_venues.create', compact('sports', 'venues'));
     }
 
     /**
@@ -55,6 +60,7 @@ class SportVenueController extends AppBaseController
     public function store(CreateSportVenueRequest $request)
     {
         $input = $request->all();
+        $input['created_by'] = auth()->user()->id;
 
         $sportVenue = $this->sportVenueRepository->create($input);
 
@@ -93,6 +99,8 @@ class SportVenueController extends AppBaseController
     public function edit($id)
     {
         $sportVenue = $this->sportVenueRepository->find($id);
+        $sports = Sport::pluck('name', 'id')->prepend('Select Sports');
+        $venues = Venue::pluck('name', 'id')->prepend('Select Venue');
 
         if (empty($sportVenue)) {
             Flash::error('Sport Venue not found');
@@ -100,7 +108,7 @@ class SportVenueController extends AppBaseController
             return redirect(route('sportVenues.index'));
         }
 
-        return view('sport_venues.edit')->with('sportVenue', $sportVenue);
+        return view('sport_venues.edit', compact('sportVenue', 'sports', 'venues'));
     }
 
     /**

@@ -63,6 +63,11 @@
                     $("#district_id").empty();
                 }   
             });
-        })
+        });
+        
+        $(function () {
+            $('.select2').select2()
+            $('.chosen-select').chosen({ width: '100%' }) 
+        });
     </script>
 @endpush

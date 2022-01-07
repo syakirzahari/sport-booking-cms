@@ -21,7 +21,8 @@
                               {!! Form::model($sportVenue, ['route' => ['sportVenues.update', $sportVenue->id], 'method' => 'patch']) !!}
 
                               @include('sport_venues.fields')
-
+                              {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                              <a href="{{ route('sportVenues.index') }}" class="btn btn-secondary">Cancel</a>
                               {!! Form::close() !!}
                             </div>
                         </div>

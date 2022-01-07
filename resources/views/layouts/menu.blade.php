@@ -12,6 +12,13 @@
     </a>
 </li>
 
+<li class="nav-item {{ Request::is('sportVenues*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('sportVenues.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Sport Venues</span>
+    </a>
+</li>
+
 <li class="nav-item {{ Request::is('states*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('states.index') }}">
         <i class="nav-icon icon-cursor"></i>
@@ -44,12 +51,7 @@
         <span>Users</span>
     </a>
 </li>
-<li class="nav-item {{ Request::is('sportVenues*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('sportVenues.index') }}">
-        <i class="nav-icon icon-cursor"></i>
-        <span>Sport Venues</span>
-    </a>
-</li>
+
 <li class="nav-item {{ Request::is('vendors*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('vendors.index') }}">
         <i class="nav-icon icon-cursor"></i>

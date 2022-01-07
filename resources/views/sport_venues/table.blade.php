@@ -2,23 +2,25 @@
     <table class="table table-striped" id="sportVenues-table">
         <thead>
             <tr>
-                <th>Sport Id</th>
-        <th>Venue Id</th>
-        <th>Time From</th>
-        <th>Time To</th>
-        <th>Creator Id</th>
+                <th>#</th>
+                <th>Sport</th>
+                <th>Venue</th>
+                <th>Time From</th>
+                <th>Time To</th>
+                <th>Creator Id</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
         <tbody>
             @if(count($sportVenues) > 0)
-            @foreach($sportVenues as $sportVenue)
+            @foreach($sportVenues as $i => $sportVenue)
             <tr>
-            <td>{{ $sportVenue->sport_id }}</td>
-            <td>{{ $sportVenue->venue_id }}</td>
-            <td>{{ $sportVenue->time_from }}</td>
-            <td>{{ $sportVenue->time_to }}</td>
-            <td>{{ $sportVenue->created_by }}</td>
+                <td>{{ $i+1 }}</td>
+                <td>{{ $sportVenue->sport->name }}</td>
+                <td>{{ $sportVenue->venue->name }}</td>
+                <td>{{ $sportVenue->time_from }}</td>
+                <td>{{ $sportVenue->time_to }}</td>
+                <td>{{ $sportVenue->created_by }}</td>
                 <td>
                     {!! Form::open(['route' => ['sportVenues.destroy', $sportVenue->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

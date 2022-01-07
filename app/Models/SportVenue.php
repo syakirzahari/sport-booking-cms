@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Eloquent as Model;
+use App\Models\Xref\Sport;
+use App\Models\Venue;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -60,5 +62,14 @@ class SportVenue extends Model
         
     ];
 
+    public function sport()
+    {
+        return $this->belongsTo(Sport::class, 'sport_id');
+    }
+
+    public function venue()
+    {
+        return $this->belongsTo(Venue::class, 'venue_id');
+    }
     
 }

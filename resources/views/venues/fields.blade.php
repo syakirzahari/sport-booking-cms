@@ -50,3 +50,8 @@
     {{ Form::select('vendor_id', $vendors, null, ['class' => 'form-control']) }}
 </div>
 
+{{-- <div class="form-group col-sm-6">
+    {{ Form::label('sports[]', 'Sport Available:') }}
+    {{ Form::select('sports[]', $sports, null, ['multiple'=>'multiple', 'class' => 'form-control select2']) }}
+</div> --}}
+
