@@ -3,15 +3,14 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Name</th>
-        <th>Address</th>
-        <th>District</th>
-        <th>State</th>
-        <th>Telephone Number</th>
-        <th>Latitude</th>
-        <th>Longitude</th>
-        <th>Owner</th>
-        <th>Vendor</th>
+                <th>Name</th>        
+                <th>Description</th>
+                <th>Address</th>
+                <th>District</th>
+                <th>State</th>
+                <th>Telephone Number</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
@@ -21,14 +20,13 @@
             <tr>
                 <td>{{ $i+1 }}</td>
                 <td>{{ $venue->name }}</td>
-            <td>{{ $venue->address }}</td>
-            <td>{{ $venue->district->name }}</td>
-            <td>{{ $venue->state->name }}</td>
-            <td>{{ $venue->telephone_number }}</td>
-            <td>{{ $venue->lat }}</td>
-            <td>{{ $venue->lng }}</td>
-            <td>{{ $venue->owner->name }}</td>
-            <td>{{ $venue->vendor->name }}</td>
+                <td>{{ $venue->description }}</td>
+                <td>{{ $venue->address }}</td>
+                <td>{{ $venue->district->name }}</td>
+                <td>{{ $venue->state->name }}</td>
+                <td>{{ $venue->telephone_number }}</td>
+                <td>{{ $venue->lat }}</td>
+                <td>{{ $venue->lng }}</td>
                 <td>
                     {!! Form::open(['route' => ['venues.destroy', $venue->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
