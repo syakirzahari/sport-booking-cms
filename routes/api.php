@@ -22,6 +22,7 @@ Route::post('register', [App\Http\Controllers\API\Auth\RegisterAPIController::cl
 Route::post('login', [App\Http\Controllers\API\Auth\LoginAPIController::class, 'login']);
      
 Route::middleware('auth:sanctum')->group( function () {
+    Route::resource('venues', VenueAPIController::class)->only(['index']);
     Route::resource('football-venues', FootballVenueAPIController::class)->only(['index']);
     Route::resource('futsal-venues', FutsalVenueAPIController::class)->only(['index']);
     Route::resource('badminton-venues',BadmintonVenueAPIController::class)->only(['index']);
