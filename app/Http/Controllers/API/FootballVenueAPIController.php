@@ -20,7 +20,7 @@ class FootballVenueAPIController extends BaseController
         $data = [];
 
         $venues = Venue::select('*')
-                    ->leftJoin('sport_venues', 'sport_venues.venue_id', '=', 'venues.id')
+                    ->rightJoin('sport_venues', 'sport_venues.venue_id', '=', 'venues.id')
                     ->where('sport_venues.sport_id', 1)
                     ->get();
     
