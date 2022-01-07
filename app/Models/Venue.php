@@ -41,6 +41,7 @@ class Venue extends Model implements HasMedia
 
     public $fillable = [
         'name',
+        'description',
         'address',
         'district_id',
         'state_id',
@@ -73,6 +74,7 @@ class Venue extends Model implements HasMedia
      */
     public static $rules = [
         'name' => 'required|string',
+        'description' => 'required|string',
         'lat' => 'required',
         'lng' => 'required'
     ];

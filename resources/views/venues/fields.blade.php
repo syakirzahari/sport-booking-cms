@@ -6,6 +6,11 @@
 </div>
 
 <div class="form-group col-sm-6">
+    {{ Form::label('description', 'Description:') }}
+    {{ Form::textarea('description', null, ['class' => 'form-control', 'rows'=> 5]) }}
+</div>
+
+<div class="form-group col-sm-6">
     {{ Form::label('address', 'Address:') }}
     {{ Form::textarea('address', null, ['class' => 'form-control', 'rows'=> 5]) }}
 </div>

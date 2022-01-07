@@ -18,6 +18,7 @@ class VenueRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'name',
+        'description',
         'address',
         'district_id',
         'state_id',
