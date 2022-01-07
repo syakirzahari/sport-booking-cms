@@ -18,10 +18,16 @@
                                 <strong>Create Venue</strong>
                             </div>
                             <div class="card-body">
-                                {!! Form::open(['route' => 'venues.store']) !!}
+                                {!! Form::open(['route' => 'venues.store', 'enctype' => "multipart/form-data"]) !!}
 
                                    @include('venues.fields')
+                                   <div class="row">
+                                        @include('media.form', ['limit' => 1])
+                                    </div>
 
+                                <!-- Submit Field -->
+                                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                                <a href="{{ route('venues.index') }}" class="btn btn-secondary">Cancel</a>
                                 {!! Form::close() !!}
                             </div>
                         </div>

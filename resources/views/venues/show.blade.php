@@ -17,7 +17,16 @@
                                  <strong>Details</strong>
                              </div>
                              <div class="card-body">
+                                <b>Venue:</b>
+                                <div class="mx-auto d-block">
+                                    <x-media-list-flex
+                                    :media="$media"
+                                    />
+                                </div>
+                                <div class="row">
                                  @include('venues.show_fields')
+                                </div>
+                                
                              </div>
                              <div class="card-footer">
                                 <div class="row">

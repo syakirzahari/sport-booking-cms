@@ -6,6 +6,7 @@ use App\Http\Requests\CreateVenueRequest;
 use App\Http\Requests\UpdateVenueRequest;
 use App\Repositories\VenueRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Http\Repositories\MediaRepository;
 use App\Models\User;
 use App\Models\Xref\Vendor;
 use App\Models\Xref\District;
@@ -67,6 +68,10 @@ class VenueController extends AppBaseController
 
         $venue = $this->venueRepository->create($input);
 
+        for ($i = 1; $i <= 10; $i++) {
+            MediaRepository::store($request, $venue, $i, 'venue', 'venue');
+        }
+
         Flash::success('Venue saved successfully.');
 
         return redirect(route('venues.index'));
@@ -83,13 +88,23 @@ class VenueController extends AppBaseController
     {
         $venue = $this->venueRepository->find($id);
 
+         // $this->authorize('update');
+         $media = $venue
+         ->media()
+         ->where('collection_name', 'venue')
+         ->orderBy('created_at', 'desc')
+         ->limit(1)
+         ->get();
+ 
+ 
+
         if (empty($venue)) {
             Flash::error('Venue not found');
 
             return redirect(route('venues.index'));
         }
 
-        return view('venues.show')->with('venue', $venue);
+        return view('venues.show', compact('venue', 'media'));
     }
 
     /**
@@ -134,7 +149,18 @@ class VenueController extends AppBaseController
             return redirect(route('venues.index'));
         }
 
+        for ($i = 1; $i <= 10; $i++) {
+            MediaRepository::store($request, $venue, $i, 'venue', 'venue');
+        }
+
         $venue = $this->venueRepository->update($request->all(), $id);
+
+        $toDeleteIds = $request->mediaTodelete;
+        // dd($toDeleteIds);
+        if($request->has('mediaTodelete')){
+            $mediaTodelete = \App\Models\Media::where('id', $toDeleteIds)->delete();
+        }
+
 
         Flash::success('Venue updated successfully.');
 

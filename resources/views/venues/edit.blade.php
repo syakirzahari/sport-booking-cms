@@ -18,10 +18,15 @@
                               <strong>Edit Venue</strong>
                           </div>
                           <div class="card-body">
-                              {!! Form::model($venue, ['route' => ['venues.update', $venue->id], 'method' => 'patch']) !!}
+                              {!! Form::model($venue, ['route' => ['venues.update', $venue->id], 'method' => 'patch', 'enctype' => "multipart/form-data"]) !!}
 
                               @include('venues.fields')
-
+                              <div class="row">
+                                @include('media.form', ['limit' => 1])
+                                </div>
+                                <!-- Submit Field -->
+                                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                                <a href="{{ route('venues.index') }}" class="btn btn-secondary">Cancel</a>
                               {!! Form::close() !!}
                             </div>
                         </div>
@@ -30,3 +35,34 @@
          </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(function () {
+                $('#state_id').change(function(){
+                var stateID = $(this).val();  
+                console.log(stateID);
+                if(stateID){
+                    $.ajax({
+                    type:"GET",
+                    url:"{{url('getDistrict')}}?state_id="+stateID,
+                    success:function(res){        
+                    if(res){
+                        $("#district_id").empty();
+                        $("#district_id").append('<option>Select District</option>');
+                        $.each(res,function(key,value){
+                        $("#district_id").append('<option value="'+key+'">'+value+'</option>');
+                        });
+                    
+                    }else{
+                        $("#district_id").empty();
+                    }
+                    }
+                    });
+                }else{
+                    $("#district_id").empty();
+                }   
+            });
+        })
+    </script>
+@endpush

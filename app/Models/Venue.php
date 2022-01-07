@@ -5,6 +5,7 @@ namespace App\Models;
 use Eloquent as Model;
 use App\Models\Xref\District;
 use App\Models\Xref\State;
+use App\Models\Xref\Vendor;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;

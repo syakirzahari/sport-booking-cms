@@ -18,6 +18,8 @@ Route::get('', fn() => redirect(route('login')));
 Auth::routes();
 // Auth::routes(['register' => false]);
 
+Route::get('media/{media}', [App\Http\Controllers\MediaController::class, 'show'])->name('media.show');
+
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
