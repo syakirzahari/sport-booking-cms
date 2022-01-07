@@ -8,21 +8,20 @@ use App\Models\Venue;
 use App\Libraries\SportMenuDataPreparation;
 use Validator;
    
-class VenueAPIController extends BaseController
+class FootballVenueAPIController extends BaseController
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $sport_id = $request->sport_id;
         $data = [];
 
         $venues = Venue::select('*')
                     ->join('sport_venues', 'sport_venues.venue_id', '=', 'venues.id')
-                    ->where('sport_venues.sport_id', $sport_id)
+                    ->where('sport_venues.sport_id', 1)
                     ->get();
     
         foreach ($venues as $venues) {
