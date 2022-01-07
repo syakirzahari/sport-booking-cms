@@ -7,7 +7,7 @@ class SportMenuDataPreparation
     public static function fetchSingle($venues): array
     {
        // media
-        $media = $venues->media()->where('collection_name', 'venue')->orderBy('created_at', 'desc')->limit(1)->get();
+        $media = $venues->media()->where('model_id', $venues->id)->where('collection_name', 'venue')->orderBy('created_at', 'desc')->limit(1)->get();
         $media_data = [];
 
         foreach ($media as $medium) {
