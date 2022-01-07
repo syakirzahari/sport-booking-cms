@@ -43,6 +43,8 @@ Route::group(['middleware' => ['auth']], function () {
     
     
     Route::resource('vendors', App\Http\Controllers\VendorController::class);
+
+    Route::get('getDistrict',[ App\Http\Controllers\DistrictController::class, 'getDistrict'])->name('getDistrict');
 });
 
 

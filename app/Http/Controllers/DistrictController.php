@@ -160,4 +160,11 @@ class DistrictController extends AppBaseController
 
         return redirect(route('districts.index'));
     }
+
+    public function getDistrict(Request $request)
+    {
+        $district = District::where("state_id",$request->state_id)->pluck("name","id");
+        
+        return response()->json($district);
+    }
 }

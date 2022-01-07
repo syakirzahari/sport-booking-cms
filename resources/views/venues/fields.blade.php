@@ -12,14 +12,13 @@
 
 <div class="form-group col-sm-6">
     {{ Form::label('state_id', 'State:') }}
-    {{ Form::select('state_id', $states, null, ['class' => 'form-control']) }}
+    {{ Form::select('state_id', $states, null, ['class' => 'form-control choosen-select', 'id' => 'state_id']) }}
 </div>
 
 <div class="form-group col-sm-6">
     {{ Form::label('district_id', 'District:') }}
-    {{ Form::select('district_id', $districts, null, ['class' => 'form-control']) }}
+    {{ Form::select('district_id', $districts, null, ['class' => 'form-control chosen-select']) }}
 </div>
-
 
 <div class="form-group col-sm-6">
     {{ Form::label('latitude', 'Latitude:') }}

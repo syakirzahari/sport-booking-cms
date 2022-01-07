@@ -30,3 +30,35 @@
            </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(function () {
+                $('#state_id').change(function(){
+                var stateID = $(this).val();  
+                console.log(stateID);
+                if(stateID){
+                    $.ajax({
+                    type:"GET",
+                    url:"{{url('getDistrict')}}?state_id="+stateID,
+                    success:function(res){        
+                    if(res){
+                        $("#district_id").empty();
+                        $("#district_id").append('<option>Select District</option>');
+                        $.each(res,function(key,value){
+                        $("#district_id").append('<option value="'+key+'">'+value+'</option>');
+                        });
+                    
+                    }else{
+                        $("#district_id").empty();
+                    }
+                    }
+                    });
+                }else{
+                    $("#district_id").empty();
+                }   
+            });
+        })
+    </script>
+@endpush
+
