@@ -16,8 +16,6 @@ class UserProfileAPIController extends BaseController
      */
     public function index()
     {
-        $user = User::find(auth()->user()->id)->first();
-
-        return $this->sendResponse($user, 'User retrieved successfully.');
+        return $this->sendResponse(auth()->user(), 'User retrieved successfully.');
     }
 }
