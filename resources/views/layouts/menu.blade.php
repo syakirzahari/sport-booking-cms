@@ -64,3 +64,9 @@
         <span>Feedback</span>
     </a>
 </li>
+<li class="nav-item {{ Request::is('articleTypes*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('articleTypes.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Article Types</span>
+    </a>
+</li>
