@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Eloquent as Model;
-use App\Models\Xref\articleType;
+use App\Models\Xref\ArticleType;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
