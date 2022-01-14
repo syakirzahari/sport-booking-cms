@@ -2,9 +2,9 @@
     <table class="table table-striped" id="articles-table">
         <thead>
             <tr>
-                <th>#</th>
-                <th>Content</th>
+                <th>#</th>                
                 <th>Article Type</th>
+                <th>Content</th>
                 <th>Creator</th>
                 <th colspan="3">Action</th>
             </tr>
@@ -13,9 +13,9 @@
         @if(count($articles) > 0)
         @foreach($articles as $i => $article)
             <tr>
-                <td>{{ $i+1 }}</td>
-                <td>{{ $article->content }}</td>
+                <td>{{ $i+1 }}</td>                
                 <td>{{ $article->articleType->name }}</td>
+                <td>{{ $article->content }}</td>
                 <td>{{ $article->creator->name }}</td>
                 <td>
                     {!! Form::open(['route' => ['articles.destroy', $article->id], 'method' => 'delete']) !!}
