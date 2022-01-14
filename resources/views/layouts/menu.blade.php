@@ -58,3 +58,9 @@
         <span>Vendors</span>
     </a>
 </li>
+<li class="nav-item {{ Request::is('feedbacks*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('feedbacks.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Feedback</span>
+    </a>
+</li>

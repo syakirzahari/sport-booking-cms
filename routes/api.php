@@ -26,4 +26,6 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::resource('football-venues', FootballVenueAPIController::class)->only(['index']);
     Route::resource('futsal-venues', FutsalVenueAPIController::class)->only(['index']);
     Route::resource('badminton-venues',BadmintonVenueAPIController::class)->only(['index']);
+    Route::resource('users',UserProfileAPIController::class)->only(['index']);
+    Route::resource('contact_us', ContactAPIController::class)->only(['store']);
 });
