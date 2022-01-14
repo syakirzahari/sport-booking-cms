@@ -3,7 +3,7 @@
 @section('content')
     <ol class="breadcrumb">
           <li class="breadcrumb-item">
-             <a href="{!! route('feedback.index') !!}">Feedback</a>
+             <a href="{!! route('feedbacks.index') !!}">Feedback</a>
           </li>
           <li class="breadcrumb-item active">Edit</li>
         </ol>
@@ -20,7 +20,7 @@
                           <div class="card-body">
                               {!! Form::model($feedback, ['route' => ['feedbacks.update', $feedback->id], 'method' => 'patch']) !!}
 
-                              @include('feedback.fields')
+                              @include('feedbacks.fields')
 
                               {!! Form::close() !!}
                             </div>

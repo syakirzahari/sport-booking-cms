@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Repositories\ArticleRepository;
+use App\Models\Xref\ArticleType;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -42,7 +43,8 @@ class ArticleController extends AppBaseController
      */
     public function create()
     {
-        return view('articles.create');
+        $type = ArticleType::pluck('name', 'id')->prepend('Please Choose');
+        return view('articles.create', compact('type'));
     }
 
     /**
@@ -55,6 +57,7 @@ class ArticleController extends AppBaseController
     public function store(CreateArticleRequest $request)
     {
         $input = $request->all();
+        $input['created_by'] = auth()->user()->id;
 
         $article = $this->articleRepository->create($input);
 
@@ -93,6 +96,7 @@ class ArticleController extends AppBaseController
     public function edit($id)
     {
         $article = $this->articleRepository->find($id);
+        $type = ArticleType::pluck('name', 'id')->prepend('Please Choose');
 
         if (empty($article)) {
             Flash::error('Article not found');
@@ -100,7 +104,7 @@ class ArticleController extends AppBaseController
             return redirect(route('articles.index'));
         }
 
-        return view('articles.edit')->with('article', $article);
+        return view('articles.edit', compact('article', 'type'));
     }
 
     /**

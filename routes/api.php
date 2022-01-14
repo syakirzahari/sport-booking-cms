@@ -30,3 +30,7 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::resource('contact_us', ContactAPIController::class)->only(['store']);
     Route::resource('update_password', Auth\ResetPasswordAPIController::class)->only(['store']);
 });
+
+Route::resource('privacy-policy', PrivacyAPIController::class)->only(['index']);
+
+Route::resource('about-us', AboutUsAPIController::class)->only(['index']);

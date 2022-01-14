@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Eloquent as Model;
+use App\Models\Xref\articleType;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -57,7 +58,12 @@ class Article extends Model
 
     public function creator()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function articleType()
+    {
+        return $this->belongsTo(ArticleType::class, 'article_type_id');
     }
     
 }
