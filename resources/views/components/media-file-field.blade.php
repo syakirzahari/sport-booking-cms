@@ -1,5 +1,5 @@
 <div class="form-group col-md-6 {{ $errors->has('file' . $i) ? 'has-error' : '' }}">
-    {!! Form::label('file' . $i, __('Gambar ' . $i).':') !!}
+    {!! Form::label('file' . $i, __('Image ' . $i).':') !!}
     @if($i<=5)
     <sup style="color:red"><i class="fa fa-asterisk"></i></sup>
     @else

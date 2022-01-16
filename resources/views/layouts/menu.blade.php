@@ -70,3 +70,9 @@
         <span>Article Types</span>
     </a>
 </li>
+<li class="nav-item {{ Request::is('imageSliders*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('imageSliders.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Image Sliders</span>
+    </a>
+</li>

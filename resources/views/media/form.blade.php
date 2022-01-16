@@ -1,6 +1,6 @@
 <div class="col-md-12 mb-3">
     <hr>
-    <h4>Venue Image</h4>
+    {{-- <h4>Venue Image</h4> --}}
     <div class="alert alert-info">
         <small>
             Supported formats are jpg, png.

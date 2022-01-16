@@ -29,8 +29,8 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::resource('users',UserProfileAPIController::class)->only(['index']);
     Route::resource('contact_us', ContactAPIController::class)->only(['store']);
     Route::resource('update_password', Auth\ResetPasswordAPIController::class)->only(['store']);
+    Route::get('image-sliders', [App\Http\Controllers\API\SliderAPIController::class, 'index'])->name('api.slider.index');
 });
 
 Route::resource('privacy-policy', PrivacyAPIController::class)->only(['index']);
-
 Route::resource('about-us', AboutUsAPIController::class)->only(['index']);
