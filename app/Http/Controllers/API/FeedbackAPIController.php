@@ -1,6 +1,6 @@
 <?php
    
-namespace App\Http\Controllers\API\Auth;
+namespace App\Http\Controllers\API;
    
 use Illuminate\Http\Request;
 use App\Models\Feedback;
