@@ -2,20 +2,23 @@
     <table class="table table-striped" id="feedback-table">
         <thead>
             <tr>
+                <th>#</th>
                 <th>Title</th>
-        <th>Content</th>
-        <th>Created By</th>
-        <th>Is Replied</th>
+                <th>Content</th>
+                <th>Created By</th>
+                <th>Is Replied</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
         <tbody>
-        @foreach($feedback as $feedback)
+        @if(count($feedback) > 0)
+        @foreach($feedback as $i => $feedback)
             <tr>
+                <td>{{ $i+1 }}</td>
                 <td>{{ $feedback->title }}</td>
-            <td>{{ $feedback->content }}</td>
-            <td>{{ $feedback->createdBy->name }}</td>
-            <td>{{ $feedback->is_replied }}</td>
+                <td>{{ $feedback->content }}</td>
+                <td>{{ $feedback->createdBy->name }}</td>
+                <td>{{ $feedback->is_replied }}</td>
                 <td>
                     {!! Form::open(['route' => ['feedbacks.destroy', $feedback->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
@@ -27,6 +30,9 @@
                 </td>
             </tr>
         @endforeach
+        @else
+        <td colspan="7">No Data</td>
+        @endif
         </tbody>
     </table>
 </div>
