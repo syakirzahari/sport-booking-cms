@@ -10,7 +10,7 @@
         <tbody>
         @foreach($imageSliders as $imageSliders)
             <tr>
-                <td>{{ $imageSliders->name }}</td>
+                <td><img src="{{$imageSliders->getFirstMediaUrl('ImageSlider', 'thumb')}}" / width="120px"></td>
                 <td>{{ $imageSliders->is_active == 1 ? 'Active' : 'Inactive' }}</td>
                 <td>
                     {!! Form::open(['route' => ['imageSliders.destroy', $imageSliders->id], 'method' => 'delete']) !!}
