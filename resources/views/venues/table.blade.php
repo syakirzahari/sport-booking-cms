@@ -3,7 +3,7 @@
         <thead>
             <tr>
                 <th>#<th>
-                <th>Image</th>
+                {{-- <th>Image</th> --}}
                 <th>Name</th>        
                 <th>Description</th>
                 <th>Address</th>
@@ -20,7 +20,7 @@
         @foreach($venues as $i => $venue)
             <tr>
                 <td>{{ $i+1 }}</td>
-                <td><img src="{{$venue->getFirstMediaUrl('venue', 'thumb')}}" width="100px"></td>
+                <td><img src="{{$venue->getFirstMediaUrl('venue', 'thumb')}}" / width="120px"></td>
                 <td>{{ $venue->name }}</td>
                 <td>{{ $venue->description }}</td>
                 <td>{{ $venue->address }}</td>
