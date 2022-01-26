@@ -20,7 +20,7 @@
         @foreach($venues as $i => $venue)
             <tr>
                 <td>{{ $i+1 }}</td>
-                <td><img src="{{$imageSliders->getFirstMediaUrl('ImageSlider', 'thumb')}}" width="100px"></td>
+                <td><img src="{{$imageSliders->getFirstMediaUrl('venue', 'thumb')}}" width="100px"></td>
                 <td>{{ $venue->name }}</td>
                 <td>{{ $venue->description }}</td>
                 <td>{{ $venue->address }}</td>
