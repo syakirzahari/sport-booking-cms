@@ -2,7 +2,8 @@
     <table class="table table-striped" id="venues-table">
         <thead>
             <tr>
-                <th>#</th>
+                <th>#<th>
+                <th>Image</th>
                 <th>Name</th>        
                 <th>Description</th>
                 <th>Address</th>
@@ -19,6 +20,7 @@
         @foreach($venues as $i => $venue)
             <tr>
                 <td>{{ $i+1 }}</td>
+                <td><img src="{{$imageSliders->getFirstMediaUrl('ImageSlider', 'thumb')}}" width="100px"></td>
                 <td>{{ $venue->name }}</td>
                 <td>{{ $venue->description }}</td>
                 <td>{{ $venue->address }}</td>
