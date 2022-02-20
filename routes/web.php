@@ -46,7 +46,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('articleTypes', App\Http\Controllers\Xref\ArticleTypeController::class);
 
     Route::resource('imageSliders', App\Http\Controllers\ImageSliderController::class);
+
+    Route::resource('slots', App\Http\Controllers\SlotController::class);
 });
+
+
 
 
 
