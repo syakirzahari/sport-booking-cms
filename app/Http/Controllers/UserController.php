@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateUserRequest;
-use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\UserRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\User;
+use App\Models\Xref\Vendor;
+use App\Models\Xref\District;
+use App\Models\Xref\State;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Hash;
 
 class UserController extends AppBaseController
 {
@@ -43,7 +45,11 @@ class UserController extends AppBaseController
      */
     public function create()
     {
-        return view('users.create');
+        $districts = District::pluck('name', 'id')->prepend('Select District');
+        $states = State::pluck('name', 'id')->prepend('Select State');
+        $vendors = Vendor::pluck('name', 'id')->prepend('Select Vendor');
+
+        return view('users.create', compact('districts', 'states', 'vendors'));
     }
 
     /**
@@ -53,9 +59,11 @@ class UserController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateUserRequest $request)
+    public function store(Request $request)
     {
         $input = $request->all();
+        $input['is_public'] = 0;
+        $input['password'] = Hash::make('Password@123');
 
         $user = $this->userRepository->create($input);
 
@@ -95,13 +103,17 @@ class UserController extends AppBaseController
     {
         $user = $this->userRepository->find($id);
 
+        $districts = District::pluck('name', 'id')->all();
+        $states = State::pluck('name', 'id')->all();
+        $vendors = Vendor::pluck('name', 'id')->all();
+
         if (empty($user)) {
             Flash::error('User not found');
 
             return redirect(route('users.index'));
         }
 
-        return view('users.edit')->with('user', $user);
+        return view('users.edit', compact('user', 'districts', 'states', 'vendors'));
     }
 
     /**
@@ -112,7 +124,7 @@ class UserController extends AppBaseController
      *
      * @return Response
      */
-    public function update($id, UpdateUserRequest $request)
+    public function update($id, Request $request)
     {
         $user = $this->userRepository->find($id);
 

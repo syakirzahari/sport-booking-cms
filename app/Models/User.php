@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Notifications\ResetPasswordNotification;
+use App\Models\Xref\District;
+use App\Models\Xref\State;
+use App\Models\Xref\Vendor;
 
 class User extends Authenticatable
 {
@@ -24,7 +27,10 @@ class User extends Authenticatable
         'password',
         'telephone_number',
         'team_name',
-        'is_public'
+        'is_public',
+        'district_id',
+        'state_id',
+        'vendor_id',
     ];
 
     /**
@@ -54,5 +60,20 @@ class User extends Authenticatable
     public function routeNotificationForMail($notification)
     {
         return $this->email;
+    }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class, 'state_id');
+    }
+
+    public function district()
+    {
+        return $this->belongsTo(District::class, 'district_id');
+    }
+
+    public function vendor()
+    {
+        return $this->belongsTo(Vendor::class, 'vendor_id');
     }
 }
