@@ -48,7 +48,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('imageSliders', App\Http\Controllers\ImageSliderController::class);
 
     Route::resource('slots', App\Http\Controllers\SlotController::class);
+
+    Route::resource('slotAvailabilities', App\Http\Controllers\SlotAvailabilityController::class);
 });
+
+
 
 
 

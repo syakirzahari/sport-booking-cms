@@ -3,27 +3,25 @@
 namespace App\Models;
 
 use Eloquent as Model;
-use App\Models\Xref\Sport;
-use App\Models\Venue;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * Class Slot
+ * Class SlotAvailability
  * @package App\Models
- * @version February 20, 2022, 4:36 am UTC
+ * @version February 20, 2022, 3:50 pm UTC
  *
- * @property int $sport_id
- * @property int $venue_id
- * @property varchar255 $court_name
+ * @property string $date
+ * @property time $time_from
+ * @property time $time_to
  */
-class Slot extends Model
+class SlotAvailability extends Model
 {
     use SoftDeletes;
 
     use HasFactory;
 
-    public $table = 'venue_slots';
+    public $table = 'slot_availabilities';
     
 
     protected $dates = ['deleted_at'];
@@ -31,9 +29,12 @@ class Slot extends Model
 
 
     public $fillable = [
-        'sport_id',
-        'venue_id',
-        'court_name'
+        'date',
+        'time_from',
+        'time_to',
+        'venue_slot_id',
+        'rate',
+        'is_available'
     ];
 
     /**
@@ -42,7 +43,9 @@ class Slot extends Model
      * @var array
      */
     protected $casts = [
-        
+        // 'date' => 'date',
+        // 'time_from' => 'time',
+        // 'time_to' => 'time',
     ];
 
     /**
@@ -51,16 +54,7 @@ class Slot extends Model
      * @var array
      */
     public static $rules = [
-        
     ];
 
-    public function sport()
-    {
-        return $this->belongsTo(Sport::class, 'sport_id');
-    }
-
-    public function venue()
-    {
-        return $this->belongsTo(Venue::class, 'venue_id');
-    }
+    
 }

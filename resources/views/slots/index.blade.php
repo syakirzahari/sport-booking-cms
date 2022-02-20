@@ -4,7 +4,18 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Slots</li>
     </ol>
+    
     <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+              Venue: {{ $details->venue->name }}
+            </div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                Sport: <span class="badge badge-primary">{{ $details->sport->name }}</span>
+              </blockquote>
+            </div>
+          </div>
         <div class="animated fadeIn">
              @include('flash::message')
              <div class="row">

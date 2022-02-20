@@ -8,6 +8,7 @@ use App\Repositories\SlotsRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use App\Models\Slot;
+use App\Models\SportVenue;
 use Flash;
 use Response;
 
@@ -34,8 +35,9 @@ class SlotController extends AppBaseController
                 ->where('sport_id', request()->sport_id)
                 ->get();
 
-        return view('slots.index')
-            ->with('slots', $slots);
+        $details = SportVenue::where('venue_id', request()->venue_id)->first();
+
+        return view('slots.index', compact('slots', 'details'));
     }
 
     /**

@@ -75,4 +75,3 @@
         <i class="nav-icon icon-cursor"></i>
         <span>Image Sliders</span>
     </a>
-</li>
