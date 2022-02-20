@@ -71,7 +71,7 @@ class SlotController extends AppBaseController
 
         Flash::success('Slots saved successfully.');
 
-        return redirect(route('slots.index'));
+        return redirect(route('slots.index', ['venue_id' => $slots->venue_id, 'sport_id' => $slots->sport_id]));
     }
 
     /**
