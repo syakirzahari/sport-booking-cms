@@ -1,0 +1,171 @@
+@extends('layouts.app')
+
+@section('content')
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Slot Availabilities</li>
+    </ol>
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                Venue: {{ $details->venue->name }}
+            </div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p>Sport: <span class="badge badge-primary">{{ $details->sport->name }}</span></p>
+                <p>Slot: <span class="badge badge-primary">{{ $details->court_name }}</span></p>
+              </blockquote>            
+              <a type="button" href="{{ route('slots.index') }}" class="btn btn-warning">Back</a>
+            </div>
+          </div>
+        <div class="animated fadeIn">
+             @include('flash::message')
+             <div class="row">
+                 <div class="col-lg-12">
+                     <div class="card">
+                         <div class="card-header">
+                             <i class="fa fa-align-justify"></i>
+                             Slot Availabilities
+                             <a class="pull-right" href="{{ route('slotAvailabilities.create', ['venue_slot_id' => request()->venue_slot_id ?? 'null']) }}"><i class="fa fa-plus-square fa-lg"></i> Add</a>
+                         </div>
+                         <div class="card-body">
+                            <div id="calendar">
+
+                             {{-- @include('slot_availabilities.table') --}}
+                              <div class="pull-right mr-3">
+                                     
+                              </div>
+                         </div>
+                     </div>                         
+                  </div>
+             </div>
+         </div>
+    </div>
+    @include('slot_availabilities.modal_create')
+@endsection
+
+@push('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
+<script>
+
+    var para_str = '';
+
+    // Checking url is defined or not
+    /* url variable is not defined */
+    // get url parameters
+    url = location.search; // e.g. ?num1=43
+    var parts = url.substring(1).split('venue_slot_id=');
+    para_str = parts[1];
+
+    $(document).ready(function () {
+    
+        $.ajaxSetup({
+            headers:{
+                'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    
+        var calendar = $('#calendar').fullCalendar({
+            editable:true,
+            header:{
+                left:'prev,next today',
+                center:'title',
+                right:'month,agendaWeek,agendaDay'
+            },
+            events:'/slotAvailabilities?venue_slot_id=' + para_str,
+            selectable:true,
+            selectHelper: true,
+            select:function(start, end, allDay)
+            {  
+                var start = $.fullCalendar.formatDate(start, 'MM/DD/YYYY');
+                var end = $.fullCalendar.formatDate(end, 'MM/DD/YYYY');
+
+                // var venue_slot_id = $venue_slot_id ?? 'null';
+                console.log(start);
+                // console.log(venue_slot_id);
+
+                // $('#availability').modal("show", function(e) {
+                //     var link     = e.relatedTarget(),
+                //         modal    = $(this),
+                //         date = link.data(start),
+                //         venue_slot_id  = link.data(para_str);
+
+                //         $('#date').val(date);
+                //     modal.find("#venue_slot_id").val(venue_slot_id);
+                // });
+
+                // $('#save_slot_btn').on('click', function () {
+                //     var data = $('#create_slot_form').serializeArray()
+                //     // data.push({ name: 'complaints', value: mapSelectionList().join(',') })
+                //     console.log(data); 
+
+                //     $.ajax({
+                //     url: '{{ route("slotAvailabilities.store") }}',
+                //     type: 'POST',
+                //     data: $.param(data),
+                //     dataType: 'json', // lowercase is always preferered though jQuery does it, too.
+                //     success: function (data) {
+                //         calendar.fullCalendar('refetchEvents');
+                //         alert("Slot Created Successfully");
+                //         console.log('success to save data', data)
+                //         // location.reload()
+                //     }
+                //     })
+                // })
+                //     $.ajax({
+                //         url:"/full-calender/action",
+                //         type:"POST",
+                //         data:{
+                //             title: title,
+                //             start: start,
+                //             end: end,
+                //             type: 'add'
+                //         },
+                //         success:function(data)
+                //         {
+                //             calendar.fullCalendar('refetchEvents');
+                //             alert("Event Created Successfully");
+                //         }
+                //     })
+          
+            },
+            editable: true,
+            eventClick:function(event)
+            {
+                var url = "/slotAvailabilities/" + event.id + "/edit";
+                window.location.href = url;
+
+                // console.log(event);
+                //     $('#availability').modal("show"); 
+                //     $('#id').val(event.id);
+                //     $('#date').val(event.date);
+                //     $('#time_from').val(event.time_from);
+                //     $('#time_to').val(event.time_to);
+                //     $('#venue_slot_id').val(event.venue_slot_id);
+                //     $('#rate').val(event.rate);
+
+                // $('#save_slot_btn').on('click', function () {
+                //     var data = $('#create_slot_form').serializeArray()
+                //     console.log(data); 
+                //     var url = "/slot_time/" + event.id;
+
+                //     $.ajax({
+                //     url: url,
+                //     type: 'PUT',
+                //     data: $.param(data),
+                //     dataType: 'json', // lowercase is always preferered though jQuery does it, too.
+                //     success: function (data) {
+                //         calendar.fullCalendar('refetchEvents');
+                //         alert("Slot Updated Successfully");
+                //         console.log('success to save data', data)
+                //         // location.reload()
+                //     }
+                //     })
+                // })
+            }
+        });
+    
+    });
+      
+    </script> 
+@endpush
+

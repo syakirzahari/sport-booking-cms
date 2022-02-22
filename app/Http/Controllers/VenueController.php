@@ -8,6 +8,7 @@ use App\Repositories\VenueRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Repositories\MediaRepository;
 use App\Models\User;
+use App\Models\Venue;
 use App\Models\Xref\Vendor;
 use App\Models\Xref\District;
 use App\Models\Xref\State;
@@ -191,5 +192,12 @@ class VenueController extends AppBaseController
         Flash::success('Venue deleted successfully.');
 
         return redirect(route('venues.index'));
+    }
+
+    public function getVenue(Request $request)
+    {
+        $venue = Venue::where("vendor_id",$request->vendor_id)->pluck("name","id");
+        
+        return response()->json($venue);
     }
 }

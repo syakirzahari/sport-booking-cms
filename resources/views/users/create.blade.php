@@ -65,6 +65,31 @@
                     $("#district_id").empty();
                 }   
             });
+
+            $('#vendor_id').change(function(){
+                var vendorID = $(this).val();  
+                console.log(vendorID);
+                if(vendorID){
+                    $.ajax({
+                    type:"GET",
+                    url:"{{url('getVenue')}}?vendor_id="+vendorID,
+                    success:function(res){        
+                    if(res){
+                        $("#venue_id").empty();
+                        $("#veneu_id").append('<option>Select Venue</option>');
+                        $.each(res,function(key,value){
+                        $("#venue_id").append('<option value="'+key+'">'+value+'</option>');
+                        });
+                    
+                    }else{
+                        $("#venue_id").empty();
+                    }
+                    }
+                    });
+                }else{
+                    $("#venue_id").empty();
+                }   
+            });
         });
 
         $(function () {

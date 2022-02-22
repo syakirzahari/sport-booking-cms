@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\UserRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\User;
+use App\Models\Venue;
 use App\Models\Xref\Vendor;
 use App\Models\Xref\District;
 use App\Models\Xref\State;
@@ -48,8 +49,9 @@ class UserController extends AppBaseController
         $districts = District::pluck('name', 'id')->prepend('Select District');
         $states = State::pluck('name', 'id')->prepend('Select State');
         $vendors = Vendor::pluck('name', 'id')->prepend('Select Vendor');
+        $venues = Venue::pluck('name', 'id')->prepend('Select Venue');
 
-        return view('users.create', compact('districts', 'states', 'vendors'));
+        return view('users.create', compact('districts', 'states', 'vendors', 'venues'));
     }
 
     /**
@@ -66,6 +68,8 @@ class UserController extends AppBaseController
         $input['password'] = Hash::make('Password@123');
 
         $user = $this->userRepository->create($input);
+
+        $user->userVendors()->sync($this->prepareDataUser($user->id, $input)); 
 
         Flash::success('User saved successfully.');
 
@@ -165,5 +169,20 @@ class UserController extends AppBaseController
         Flash::success('User deleted successfully.');
 
         return redirect(route('users.index'));
+    }
+
+    protected function prepareDataUser($userid, $input) : array
+    {
+        $venues = [];
+
+        foreach($input['venue_id'] as $venue) {
+           $venues[$venue] = [
+                'user_id' => $userid,
+                'venue_id' => $input['venue_id'],
+                'vendor_id' => $input['vendor_id']
+           ];
+        }
+
+        return $venues;
     }
 }

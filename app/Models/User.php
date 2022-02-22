@@ -76,4 +76,11 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Vendor::class, 'vendor_id');
     }
+
+    public function userVendors()
+    {
+        return $this->belongsToMany(UserVendor::class, 'user_id', 'venue_id', 'vendor_id')
+        ->withPivot('vendor_id')
+        ->withTimestamps();
+    }
 }

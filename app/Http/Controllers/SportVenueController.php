@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateSportVenueRequest;
 use App\Repositories\SportVenueRepository;
 use App\Models\Venue;
 use App\Models\Xref\Sport;
+use App\Models\SportVenue;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -31,7 +32,7 @@ class SportVenueController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $sportVenues = $this->sportVenueRepository->all();
+        $sportVenues = SportVenue::all();
 
         return view('sport_venues.index')
             ->with('sportVenues', $sportVenues);

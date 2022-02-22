@@ -7,6 +7,7 @@
                 <th>Time From</th>
                 <th>Time To</th>
                 <tH>Rate (RM)</th>
+                <tH>Availability</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
@@ -19,12 +20,17 @@
                 <td>{{ $slotAvailability->time_from }}</td>
                 <td>{{ $slotAvailability->time_to }}</td>
                 <td>RM {{ $slotAvailability->rate }}</td>
+                @if($slotAvailability->is_available == 1)
+                    <td><span class="badge badge-success">Available</span></td>
+                @else
+                    <td><span class="badge badge-info">Booked</span></td>
+                @endif
                 <td>
                     {!! Form::open(['route' => ['slotAvailabilities.destroy', $slotAvailability->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
                         {{-- <a href="{{ route('slotAvailabilities.show', [$slotAvailability->id]) }}" class='btn btn-ghost-success'><i class="fa fa-eye"></i></a> --}}
-                        <a href="{{ route('slotAvailabilities.edit', [$slotAvailability->id, 'venue_slot_id' => request()->venue_slot_id ?? 'null' ]) }}" class='btn btn-ghost-info'><i class="fa fa-edit"></i></a>
-                        {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-ghost-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        <a href="{{ route('slotAvailabilities.edit', [$slotAvailability->id, 'venue_slot_id' => request()->venue_slot_id ?? 'null'] ) }}" class='btn btn-ghost-info'><i class="fa fa-edit"></i></a>
+                         {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-ghost-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}
                 </td>

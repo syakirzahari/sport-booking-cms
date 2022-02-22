@@ -31,16 +31,7 @@ class SlotAvailabilityController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $slotAvailabilities = SlotAvailability::where('venue_slot_id', request()->venue_slot_id)->get();
-
-        if($request->ajax())
-    	{
-    		// $data = Event::whereDate('start', '>=', $request->start)
-            //            ->whereDate('end',   '<=', $request->end)
-            //            ->get(['id', 'title', 'start', 'end']);
-            // return response()->json($data);
-    	}
-
+        $slotAvailabilities = SlotAvailability::where('venue_slot_id', request()->venue_slot_id)->orderBy('date', 'asc')->get();
         $details = Slot::where('id', request()->venue_slot_id)->first();
 
         return view('slot_availabilities.index', compact('slotAvailabilities', 'details'));
@@ -108,19 +99,17 @@ class SlotAvailabilityController extends AppBaseController
      *
      * @return Response
      */
-    public function edit($id)
+    public function edit(SlotAvailability $slotAvailability, Request $request)
     {
-        $venue_slot_id = request()->venue_slot_id ?? '';
-
-        $slotAvailability = $this->slotAvailabilityRepository->find($id);
+        $venue_slot_id = $request->venue_slot_id ?? '';
 
         if (empty($slotAvailability)) {
             Flash::error('Slot Availability not found');
 
             return redirect(route('slotAvailabilities.index'));
         }
-
-        return view('slot_availabilities.edit')->with('slotAvailability', $slotAvailability);
+ 
+        return view('slot_availabilities.edit', compact('venue_slot_id', 'slotAvailability'));
     }
 
     /**
@@ -134,6 +123,7 @@ class SlotAvailabilityController extends AppBaseController
     public function update($id, UpdateSlotAvailabilityRequest $request)
     {
         $slotAvailability = $this->slotAvailabilityRepository->find($id);
+        $venue_slot_id = Slot::where('id', request()->venue_slot_id)->first();
 
         if (empty($slotAvailability)) {
             Flash::error('Slot Availability not found');
@@ -145,7 +135,7 @@ class SlotAvailabilityController extends AppBaseController
 
         Flash::success('Slot Availability updated successfully.');
 
-        return redirect(route('slotAvailabilities.index'));
+        return redirect(route('slotAvailabilities.index',  compact('venue_slot_id')));
     }
 
     /**

@@ -33,5 +33,10 @@
 
 <div class="form-group col-sm-6">
     {{ Form::label('vendor_id', 'Vendor:') }}
-    {{ Form::select('vendor_id', $vendors, null, ['class' => 'form-control']) }}
+    {{ Form::select('vendor_id', $vendors, null, ['class' => 'form-control', 'id' => 'vendor_id']) }}
+</div>
+
+<div class="form-group col-sm-6">
+    {{ Form::label('venue_id', 'Venue:') }}
+    {{ Form::select('venue_id[]', $venues, null, ['class' => 'form-control']) }}
 </div>

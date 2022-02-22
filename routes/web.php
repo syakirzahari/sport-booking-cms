@@ -43,6 +43,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('getDistrict',[ App\Http\Controllers\DistrictController::class, 'getDistrict'])->name('getDistrict');
 
+    Route::get('getVenue',[ App\Http\Controllers\VenueController::class, 'getVenue'])->name('getVenue');
+
     Route::resource('articleTypes', App\Http\Controllers\Xref\ArticleTypeController::class);
 
     Route::resource('imageSliders', App\Http\Controllers\ImageSliderController::class);

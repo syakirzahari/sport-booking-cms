@@ -8,7 +8,7 @@
 <div class="form-group col-sm-4">
     {!! Form::label('date', 'Date:') !!}
     <sup style="color:red"><i class="fa fa-asterisk"></i></sup>
-    {!! Form::date('date', null, ['class' => 'form-control', 'id' => 'date', 'data-field' => "date"]) !!}
+    {!! Form::date('date', null, ['class' => 'form-control', 'id' => 'date', 'data-field' => "datetime"]) !!}
 </div>
 
 <div class="form-group col-sm-4">
