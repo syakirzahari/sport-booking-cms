@@ -35,7 +35,9 @@ class SlotController extends AppBaseController
                 ->where('sport_id', request()->sport_id)
                 ->get();
 
-        $details = SportVenue::where('venue_id', request()->venue_id)->first();
+        $details =  SportVenue::where('venue_id', request()->venue_id)
+                    ->where('sport_id', request()->sport_id)
+                    ->first();
 
         return view('slots.index', compact('slots', 'details'));
     }
