@@ -105,9 +105,13 @@ class SlotController extends AppBaseController
      *
      * @return Response
      */
-    public function edit($id)
+    public function edit($id, Request $request)
     {
+
         $slots = $this->slotsRepository->find($id);
+
+        $venue_id = $slots->venue_id;
+        $sport_id = $slots->sport_id;
 
         if (empty($slots)) {
             Flash::error('Slots not found');
@@ -115,7 +119,7 @@ class SlotController extends AppBaseController
             return redirect(route('slots.index'));
         }
 
-        return view('slots.edit')->with('slots', $slots);
+        return view('slots.edit', compact('slots', 'venue_id', 'sport_id' ));
     }
 
     /**
@@ -140,7 +144,7 @@ class SlotController extends AppBaseController
 
         Flash::success('Slots updated successfully.');
 
-        return redirect(route('slots.index'));
+        return redirect(route('slots.index', ['venue_id' => $slots->venue_id, 'sport_id' => $slots->sport_id]));
     }
 
     /**
@@ -166,6 +170,6 @@ class SlotController extends AppBaseController
 
         Flash::success('Slots deleted successfully.');
 
-        return redirect(route('slots.index'));
+        return redirect(route('slots.index', ['venue_id' => $slots->venue_id, 'sport_id' => $slots->sport_id]));
     }
 }

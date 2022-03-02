@@ -150,6 +150,8 @@ class SlotAvailabilityController extends AppBaseController
     public function destroy($id)
     {
         $slotAvailability = $this->slotAvailabilityRepository->find($id);
+        $venue_slot_id = Slot::where('id', $slotAvailability->venue_slot_id)->first();
+
 
         if (empty($slotAvailability)) {
             Flash::error('Slot Availability not found');
@@ -161,6 +163,6 @@ class SlotAvailabilityController extends AppBaseController
 
         Flash::success('Slot Availability deleted successfully.');
 
-        return redirect(route('slotAvailabilities.index'));
+        return redirect(route('slotAvailabilities.index',  compact('venue_slot_id')));
     }
 }
