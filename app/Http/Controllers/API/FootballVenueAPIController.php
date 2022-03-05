@@ -25,17 +25,11 @@ class FootballVenueAPIController extends BaseController
                     ->where('sport_venues.sport_id', 1)
                     ->whereNull('sport_venues.deleted_at')
                     ->get();
-
-        // $venues = DB::table('venues')
-        //             ->join('sport_venues', 'venues.id', '=', 'sport_venues.venue_id')
-        //             ->where('sport_venues.sport_id', 1)
-        //             ->whereNull('sport_venues.deleted_at')
-        //             ->get();
     
         foreach ($venues as $venues) {
             $data[] = SportMenuDataPreparation::fetchSingle($venues);
         }
 
-        return $this->sendResponse($venues, 'Venues retrieved successfully.');
+        return $this->sendResponse($data, 'Venues retrieved successfully.');
     }
 }
