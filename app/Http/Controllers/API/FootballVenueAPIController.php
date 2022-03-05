@@ -20,16 +20,17 @@ class FootballVenueAPIController extends BaseController
     {
         $data = [];
 
-        // $venues = Venue::select('*')
-        //             ->join('sport_venues', 'venues.id', '=', 'sport_venues.venue_id')
-        //             ->where('sport_venues.sport_id', 1)
-        //             ->get();
-
-        $venues = DB::table('venues')
+        $venues = Venue::select('*')
                     ->join('sport_venues', 'venues.id', '=', 'sport_venues.venue_id')
                     ->where('sport_venues.sport_id', 1)
                     ->whereNull('sport_venues.deleted_at')
                     ->get();
+
+        // $venues = DB::table('venues')
+        //             ->join('sport_venues', 'venues.id', '=', 'sport_venues.venue_id')
+        //             ->where('sport_venues.sport_id', 1)
+        //             ->whereNull('sport_venues.deleted_at')
+        //             ->get();
     
         foreach ($venues as $venues) {
             $data[] = SportMenuDataPreparation::fetchSingle($venues);
