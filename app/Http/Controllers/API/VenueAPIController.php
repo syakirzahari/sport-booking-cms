@@ -19,8 +19,9 @@ class VenueAPIController extends BaseController
     {
         $data = [];
 
-        $venues = Venue::select('*')
+        $venues = Venue::select('venues.*')
                     ->join('sport_venues', 'sport_venues.venue_id', '=', 'venues.id')
+                    ->whereNull('sport_venues.deleted_at')
                     ->get();
     
         foreach ($venues as $venues) {
