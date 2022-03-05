@@ -31,9 +31,9 @@ class FootballVenueAPIController extends BaseController
                     ->whereNull('sport_venues.deleted_at')
                     ->get();
     
-        // foreach ($venues as $venues) {
-        //     $data[] = SportMenuDataPreparation::fetchSingle($venues);
-        // }
+        foreach ($venues as $venues) {
+            $data[] = SportMenuDataPreparation::fetchSingle($venues);
+        }
 
         return $this->sendResponse($venues, 'Venues retrieved successfully.');
     }
