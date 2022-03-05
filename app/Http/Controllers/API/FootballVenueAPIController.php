@@ -30,10 +30,10 @@ class FootballVenueAPIController extends BaseController
                     ->where('sport_venues.sport_id', 1)
                     ->get();
     
-        foreach ($venues as $venues) {
-            $data[] = SportMenuDataPreparation::fetchSingle($venues);
-        }
+        // foreach ($venues as $venues) {
+        //     $data[] = SportMenuDataPreparation::fetchSingle($venues);
+        // }
 
-        return $this->sendResponse($data, 'Venues retrieved successfully.');
+        return $this->sendResponse($venues, 'Venues retrieved successfully.');
     }
 }
