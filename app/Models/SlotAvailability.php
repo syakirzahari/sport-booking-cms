@@ -56,5 +56,9 @@ class SlotAvailability extends Model
     public static $rules = [
     ];
 
+    public function venueSlot(){
+        return $this->belongsTo(Slot::class, 'venue_slot_id');
+    }
+
     
 }

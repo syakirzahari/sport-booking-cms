@@ -37,6 +37,7 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::resource('update_password', Auth\ResetPasswordAPIController::class)->only(['store']);
     Route::get('image-sliders', [App\Http\Controllers\API\SliderAPIController::class, 'index'])->name('api.slider.index');
     Route::post('feedback', [App\Http\Controllers\API\FeedbackAPIController::class, 'store'])->name('api.feedback.store');
+    Route::post('slot-availability', [App\Http\Controllers\API\SlotAvailabilityAPIController::class, 'store']);
 });
 
 

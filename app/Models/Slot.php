@@ -63,4 +63,8 @@ class Slot extends Model
     {
         return $this->belongsTo(Venue::class, 'venue_id');
     }
+
+    public function availability(){
+        return $this->hasMany(SlotAvailability::class);
+    }
 }
