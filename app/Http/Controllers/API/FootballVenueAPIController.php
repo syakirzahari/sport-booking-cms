@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use App\Models\Venue;
+use App\Models\SportVenue;
 use App\Libraries\SportMenuDataPreparation;
 use Validator;
    
@@ -19,15 +20,17 @@ class FootballVenueAPIController extends BaseController
     {
         $data = [];
 
-        $venues = Venue::select('*')
-                    // ->leftJoin('sport_venues', 'venues.id', '=', 'sport_venues.venue_id')
-                    // ->where('sport_venues.sport_id', 1)
-                    ->get();
-    
-        foreach ($venues as $venues) {
-            $data[] = SportMenuDataPreparation::fetchSingle($venues);
-        }
+        // $venues = Venue::select('*')
+        //             ->join('sport_venues', 'venues.id', '=', 'sport_venues.venue_id')
+        //             ->where('sport_venues.sport_id', 1)
+        //             ->get();
 
-        return $this->sendResponse($data, 'Venues retrieved successfully.');
+        $venues = SportVenue::with('venue')->where('sport_id', 1)->get();
+    
+        // foreach ($venues as $venues) {
+        //     $data[] = SportMenuDataPreparation::fetchSingle($venues);
+        // }
+
+        return $this->sendResponse($venues, 'Venues retrieved successfully.');
     }
 }
