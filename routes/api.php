@@ -20,7 +20,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('register', [App\Http\Controllers\API\Auth\RegisterAPIController::class, 'register']);
 Route::post('login', [App\Http\Controllers\API\Auth\LoginAPIController::class, 'login']);
-     
+Route::resource('privacy-policy', PrivacyAPIController::class)->only(['index']);
+Route::resource('about-us', AboutUsAPIController::class)->only(['index']);
+
+Route::get('sport_types', function () {
+    return App\Models\Xref\Sport::select('id', 'name')->get();
+});  
+   
 Route::middleware('auth:sanctum')->group( function () {
     Route::resource('venues', VenueAPIController::class)->only(['index']);
     Route::resource('football-venues', FootballVenueAPIController::class)->only(['index']);
@@ -33,5 +39,7 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('feedback', [App\Http\Controllers\API\FeedbackAPIController::class, 'store'])->name('api.feedback.store');
 });
 
-Route::resource('privacy-policy', PrivacyAPIController::class)->only(['index']);
-Route::resource('about-us', AboutUsAPIController::class)->only(['index']);
+
+
+
+
