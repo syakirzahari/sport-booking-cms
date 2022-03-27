@@ -12,6 +12,13 @@
     </a>
 </li>
 
+<li class="nav-item {{ Request::is('bookings*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('bookings.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Bookings</span>
+    </a>
+ </li>
+
 <li class="nav-item {{ Request::is('sportVenues*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('sportVenues.index') }}">
         <i class="nav-icon icon-cursor"></i>

@@ -52,7 +52,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('slots', App\Http\Controllers\SlotController::class);
 
     Route::resource('slotAvailabilities', App\Http\Controllers\SlotAvailabilityController::class);
+
+    Route::resource('bookings', App\Http\Controllers\BookingController::class);
 });
+
+
 
 
 
