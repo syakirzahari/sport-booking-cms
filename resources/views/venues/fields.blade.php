@@ -5,9 +5,14 @@
     {{ Form::text('name', null, ['class' => 'form-control']) }}
 </div>
 
-<div class="form-group col-sm-6">
-    {{ Form::label('description', 'Description:') }}
-    {{ Form::textarea('description', null, ['class' => 'form-control', 'rows'=> 5]) }}
+<div class="form-group col-sm-3">
+    {{ Form::label('state_id', 'State:') }}
+    {{ Form::select('state_id', $states, null, ['class' => 'form-control choosen-select', 'id' => 'state_id']) }}
+</div>
+
+<div class="form-group col-sm-3">
+    {{ Form::label('district_id', 'District:') }}
+    {{ Form::select('district_id', $districts, null, ['class' => 'form-control chosen-select']) }}
 </div>
 
 <div class="form-group col-sm-6">
@@ -16,21 +21,16 @@
 </div>
 
 <div class="form-group col-sm-6">
-    {{ Form::label('state_id', 'State:') }}
-    {{ Form::select('state_id', $states, null, ['class' => 'form-control choosen-select', 'id' => 'state_id']) }}
+    {{ Form::label('description', 'Description:') }}
+    {{ Form::textarea('description', null, ['class' => 'form-control', 'rows'=> 5]) }}
 </div>
 
-<div class="form-group col-sm-6">
-    {{ Form::label('district_id', 'District:') }}
-    {{ Form::select('district_id', $districts, null, ['class' => 'form-control chosen-select']) }}
-</div>
-
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-3">
     {{ Form::label('latitude', 'Latitude:') }}
     {{ Form::text('lat', null, ['class' => 'form-control']) }}
 </div>
 
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-3">
     {{ Form::label('longitude', 'Longitude:') }}
     {{ Form::text('lng', null, ['class' => 'form-control']) }}
 </div>

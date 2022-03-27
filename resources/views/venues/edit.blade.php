@@ -20,8 +20,9 @@
                           <div class="card-body">
                               {!! Form::model($venue, ['route' => ['venues.update', $venue->id], 'method' => 'patch', 'enctype' => "multipart/form-data"]) !!}
 
-                              @include('venues.fields')
+                              {{-- @include('venues.fields') --}}
                               <div class="row">
+                                @include('venues.fields')
                                 @include('media.form', ['limit' => 1])
                                 </div>
                                 <!-- Submit Field -->
