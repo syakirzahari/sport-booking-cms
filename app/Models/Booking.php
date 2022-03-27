@@ -45,6 +45,7 @@ class Booking extends Model
     public $fillable = [
         'booking_no',
         'slot_id',
+        'slot_availability_id',
         'venue_id',
         'is_deposit',
         'is_full',
