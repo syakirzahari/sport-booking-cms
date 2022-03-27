@@ -17,7 +17,7 @@ class SlotAvailabilityAPIController extends BaseController
     {
         $data = [];
 
-        $data = SlotAvailability::with('venueSlot')
+        $data = SlotAvailability::with('venueSlot', 'venueSlot.venue')
                 ->whereHas('venueSlot', function ($q) use ($request) {
                     $q->where('sport_id', $request->sport_id)
                        ->where('venue_id', $request->venue_id);
