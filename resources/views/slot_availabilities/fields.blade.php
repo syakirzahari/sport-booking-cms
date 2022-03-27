@@ -28,3 +28,9 @@
     <sup style="color:red"><i class="fa fa-asterisk"></i></sup>
     {{ Form::number('rate', null, ['class' => 'form-control']) }}
 </div>
+
+<div class="form-group col-sm-4">
+    {{ Form::label('deposit_rate', 'Deposit (RM):') }}
+    {{ Form::number('deposit_rate', null, ['class' => 'form-control']) }}
+</div>
+

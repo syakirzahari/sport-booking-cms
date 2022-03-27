@@ -34,6 +34,7 @@ class SlotAvailability extends Model
         'time_to',
         'venue_slot_id',
         'rate',
+        'deposit_rate',
         'is_available'
     ];
 
