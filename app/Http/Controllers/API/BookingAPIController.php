@@ -26,6 +26,7 @@ class BookingAPIController extends AppBaseController
     public function store(Request $request)
     {
         $input = $request->all();
+        $input['booked_by'] = auth()->user()->id;
 
         $booking = Booking::create($input);
 
