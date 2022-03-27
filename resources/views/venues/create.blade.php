@@ -19,9 +19,8 @@
                             </div>
                             <div class="card-body">
                                 {!! Form::open(['route' => 'venues.store', 'enctype' => "multipart/form-data"]) !!}
-
-                                   @include('venues.fields')
                                    <div class="row">
+                                        @include('venues.fields')
                                         @include('media.form', ['limit' => 1])
                                     </div>
 

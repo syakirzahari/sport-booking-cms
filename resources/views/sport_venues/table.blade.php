@@ -5,8 +5,8 @@
                 <th>#</th>
                 <th>Sport</th>
                 <th>Venue</th>
-                <th>Time From</th>
-                <th>Time To</th>
+                {{-- <th>Time From</th>
+                <th>Time To</th> --}}
                 {{-- <th>Creator Id</th> --}}
                 <th colspan="3">Action</th>
             </tr>
@@ -18,8 +18,8 @@
                 <td>{{ $i+1 }}</td>
                 <td>{{ $sportVenue->sport->name ?? '' }}</td>
                 <td>{{ $sportVenue->venue->name ?? '' }}</td>
-                <td>{{ $sportVenue->time_from }}</td>
-                <td>{{ $sportVenue->time_to }}</td>
+                {{-- <td>{{ $sportVenue->time_from }}</td>
+                <td>{{ $sportVenue->time_to }}</td> --}}
                 {{-- <td>{{ $sportVenue->created_by }}</td> --}}
                 <td>
                     {!! Form::open(['route' => ['sportVenues.destroy', $sportVenue->id], 'method' => 'delete']) !!}
@@ -34,7 +34,7 @@
             </tr>
         @endforeach
         @else
-        <td colspan="6">No Data</td>
+        <td colspan="4">No Data</td>
         @endif
         </tbody>
     </table>
