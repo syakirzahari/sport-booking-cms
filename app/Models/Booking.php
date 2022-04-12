@@ -117,7 +117,7 @@ class Booking extends Model
      **/
     public function slot()
     {
-        return $this->belongsTo(\App\Models\VenueSlot::class, 'slot_id');
+        return $this->belongsTo(\App\Models\Slot::class, 'slot_id');
     }
 
     /**
@@ -126,5 +126,13 @@ class Booking extends Model
     public function venue()
     {
         return $this->belongsTo(\App\Models\Venue::class, 'venue_id');
+    }
+
+     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function slotAvailability()
+    {
+        return $this->belongsTo(\App\Models\SlotAvailability::class, 'slot_availability_id');
     }
 }

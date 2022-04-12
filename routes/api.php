@@ -39,6 +39,8 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('feedback', [App\Http\Controllers\API\FeedbackAPIController::class, 'store'])->name('api.feedback.store');
     Route::post('slot-availability', [App\Http\Controllers\API\SlotAvailabilityAPIController::class, 'store']);
     Route::post('booking', [App\Http\Controllers\API\BookingAPIController::class, 'store'])->name('booking.store');
+    Route::get('upcoming-booking', [App\Http\Controllers\API\UpcomingBookingAPIController::class, 'index'])->name('upcoming_booking.index');
+    Route::get('past-booking', [App\Http\Controllers\API\PastBookingAPIController::class, 'index'])->name('past_booking.index');
 });
 
 
