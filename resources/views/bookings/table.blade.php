@@ -3,8 +3,9 @@
         <thead>
             <tr>
                 <th>Booking No</th>
-        <th>Slot Id</th>
-        <th>Venue Id</th>
+        <th>Slot</th>
+        <th>Venue</th>
+        <th>Opponent</th>
         <th>Is Deposit</th>
         <th>Is Full</th>
         <th>Payment Status</th>
@@ -21,6 +22,7 @@
                 <td>{{ $booking->booking_no }}</td>
             <td>{{ $booking->slot_id }}</td>
             <td>{{ $booking->venue_id }}</td>
+            <td>{{ $booking->is_no_opponent == 0 ? 'No' : 'Yes' }}</td>
             <td>{{ $booking->is_deposit }}</td>
             <td>{{ $booking->is_full }}</td>
             <td>{{ $booking->payment_status }}</td>

@@ -53,7 +53,8 @@ class Booking extends Model
         'is_refund',
         'total_amount',
         'booked_by',
-        'collected_by'
+        'collected_by',
+        'is_no_opponent'
     ];
 
     /**
