@@ -31,6 +31,7 @@ class PostOpponentAPIController extends AppBaseController
 
         $booking->locked_by = auth()->user()->id;
         $booking->opponent_Team_name = $input['opponent_team_name'];
+        $booking->is_no_opponent = 0;
         $booking->save();
 
         return $this->sendResponse($booking->toArray(), 'success', 'Opponent save successfully.');
