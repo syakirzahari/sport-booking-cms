@@ -42,6 +42,7 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::get('upcoming-booking', [App\Http\Controllers\API\UpcomingBookingAPIController::class, 'index'])->name('upcoming_booking.index');
     Route::get('past-booking', [App\Http\Controllers\API\PastBookingAPIController::class, 'index'])->name('past_booking.index');
     Route::get('find-opponent', [App\Http\Controllers\API\FindOpponentAPIController::class, 'index'])->name('find_opponent.index');
+    Route::post('post_opponent', [App\Http\Controllers\API\PostOpponentAPIController::class, 'store'])->name('opponent.store');
 });
 
 

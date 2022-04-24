@@ -55,7 +55,9 @@ class Booking extends Model
         'booked_by',
         'collected_by',
         'is_no_opponent',
-        'team_name'
+        'team_name',
+        'locked_by',
+        'opponent_team_name'
     ];
 
     /**
